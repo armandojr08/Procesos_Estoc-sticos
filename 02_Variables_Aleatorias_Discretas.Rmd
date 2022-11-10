@@ -1,0 +1,92 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+-----------------------------
+
+## Distribución de probabilidad geométrica
+
+#### Ejericicio N° 1
+
+La probabilidad de que una llamada de un vendedor a domicilio sea una venta es igual a 0.02. Si sus llamadas son independientes.
+
+a) Determine el modelo de probabilidad del número de llamadas que realiza el vendedor hasta que consigue su primera venta. ¿Cuál es la probabilidad de que su primera venta ocurra en la sexta llamada?
+
+
+    Definimos a $Y$ como el número de llamadas que realiza un vendedor hasta obtener su primera venta. El valor de $p$ es 0.02. Nos piden la probabilidad $P[Y=6]$. En `R` la variable aleatoria está definido de otra manera, por ejemplo, se define al parámetro `x` de la función `dgeom()` como el número de fracasos para obtener el primer éxito. Para este caso, $Y$ representa el número de llamadas hasta que ocurra la primera venta. Si $Y=6$, eso quiere decir que ocurrirán 5 fracasos, entonces $X=5$.
+    
+```{r}
+p <- 0.02
+dgeom(x = 5, prob = 0.02)
+```
+
+
+    
+    
+---------------------------
+ 
+ 
+
+
+Se cree que cierto virus ha invadido un colegio atacando al 5% de los niños. Si tales niños son examinados uno por uno. 
+
+a) En promedio, ¿Cuántos deberían ser examinados hasta encontrar el primero atacado con el virus?
+
+    Definimos nuestra variable aleatoria $Y$ como el número de niños examinados hasta encontrar el primero atacado por el virus. Además, definimos a $p$ como la probabilidad de que al examinar un niño, éste se encuentre contagiado. Su valor es $p=0.05$.Entonces, el valor esperado $E[Y]$ será igual a:
+
+```{r}
+p <- 0.05     # probabilidad de exito
+VE_Y <- 1/p   # valor esperado VE
+VE_Y
+```
+
+b) ¿Cuál es la probabilidad de que el doceavo niño examinado sea el quinto niño encontrado atacado por el virus?
+
+```{r}
+# hay 7 fracasos
+# deben ocurrir 5 exitos
+dnbinom(x = 7, size = 5, prob = 0.05)
+```
+
+
+-------------------------
+
+## Distribución de probabilidad binomial negativa
+
+
+#### Ejericio N° 1
+
+Un proceso de producción se detiene automáticamente apenas detecte la cuarta unidad defectuosa. Si en el proceso 1 de cada 100 unidades producidas resulta defectuosa. 
+
+a) Obtenga el modelo de probabilidad del número de unidades producidas hasta que se detenga el proceso. ¿Cuál es la probabilidad de que el proceso se detenga en la décima unidad producida?
+
+    Para que se detenga en la décima unidad producida, el décimo tuvo que ser la cuarta unidad defectuosa. En las unidades defectuosas, hay 6 unidades no defectuosas.
+
+```{r}
+# 6 es el numero de fracasos
+# 4 es el numero de exitos que deben ocurrir
+dnbinom(x = 6, size = 4, prob = 0.01)
+```
+
+
+
+#### Ejericio N° 2
+
+Cada llamada de un vendedor por teléfono puede resultar una venta con probabilidad 0.3. Suponga que sus llamadas son independientes.
+
+a) En promedio, ¿cuántas llamadas debería efectuar hasta tener 12 ventas?
+
+    Definimos nuestra variable $Y$ como el número de llamadas hasta     obtener nuestra primera venta y $p$ como la probabilidad de realizar una venta. El valor de $p$ es 0.3.
+
+```{r}
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
