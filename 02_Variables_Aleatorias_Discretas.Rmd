@@ -85,8 +85,53 @@ a) En promedio, ¿cuántas llamadas debería efectuar hasta tener 12 ventas?
 
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+## Distribución de probabilidad hipergeométrica
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+#### Ejercicio 1
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+Una empresa importadora recibe semanalmente un embarque de 500 unidades de un producto. La empresa controla la cantidad del producto probando 10 unidades del producto escogidos al azar de cada embarque (se entiende uno por uno sin reposición) y observa el número $X$ de unidades que no cumplen las especificaciones. Rechaza el lote si más de uno no cumple las especificaciones. 
+
+a) Obtenga el modelo de probabilidad de $X$. ¿Con qué probabilidad se rechaza el embarque en una semana cualquiera?
+
+    Sea $X$ el número de unidades que no cumplen las especificaciones. Entonces $X$ tiene distribución hipergeométrica con parámetros $(N,n,A)$. $N$ es el número de unidades ($N=500$), $n$ es el número de extracciones sucesivas ($n=10$) y A es el número de aciertos que hay en el total de unidades ($A=50$). Entonces $X \sim Hyper(N, n, A)$. Luego, nos piden calcular la $P[X>1]$.
+
+
+```{r}
+aciertos <- 50      # A
+no_aciertos <- 450  # N - A
+extracciones <- 10  # n
+
+# dhyper(x = 0:1, m = aciertos, n = no_aciertos, k = extracciones)
+1-phyper(q = 1, m = aciertos, n = no_aciertos, k = extracciones)
+```
+
+## Distribución de probabilidad de Poisson
+
+#### Ejercicio N° 1
+
+La empresa "Textil P&C" produce un tipo de tela en rollos de 100 metros. El número de defectos que se puede encontrar al desenrollar la tela es una variable aleatoria de Poisson con un promedio de 4 defectos por cada 20 metros de tela. 
+
+a) ¿Qué probabilidad hay de que al desenrollar un rollo de tela cualquiera, se encuentre menos de tres defectos en los primeros 50 metros?
+
+    Nos piden calcular $P[X<3]$
+```{r}
+lambda <- 10
+ppois(q = 2, lambda = lambda)
+```
+b) Calcule la probabilidad de que al desenrrollar la tela no se encuentre defectos en el primer segmento de 5 metros de tela.
+
+    Nos piden calcular $P[X=0]$
+
+```{r}
+lambda_b <- 1
+dpois(x = 0, lambda = lambda_b)
+```
+c) Si se desenrollan 5 rollos de tela escogidos al azar, ¿cuál es la probabilidad de que no se encuentre defectos en el primer segmento de 5 metros de tela en al menos dos de ellas?
+
+    Nos piden $P[Y\geq 2] = 1-P[Y<2]$
+
+```{r}
+prob_exito <- dpois(x = 0, lambda = lambda_b)
+1-pbinom(q = 1, size = 5, prob = prob_exito)
+```
+
