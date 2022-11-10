@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Distribución exponencial
+
+#### Ejercicio N° 1
+
+El tiempo durante el cual cierta marca de batería trabaja en forma efectiva hasta que falle (tiempo de falla) se distribuye según el modelo de probabilidad exponencial con un promedio de 360 días.
+
+a) ¿Qué probabilidad hay que la batería dure más de 400 días?
+
+```{r}
+prom <- 360
+1 - pexp(q = 400, rate = 1/prom)
+```
+
+#### Ejercicio 2
+
+Si el número de llamadas que recibe un teléfono celular ocurre con un promedio de 5 llamadas por hora, ¿Cuál es la probabilidad de que la primera llamada ocurra en a lo más 1/2 hora después de encender el celular?
+
+```{r}
+pexp(q = 0.5, rate = 5)
+```
+

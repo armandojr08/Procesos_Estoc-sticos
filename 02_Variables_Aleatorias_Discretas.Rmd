@@ -1,9 +1,14 @@
 ---
-title: "R Notebook"
+title: "Variables aleatorias discretas"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+    toc: true
+    toc_depth: 5
+    toc_float: 
+      collapsed: true
+      smoth_scroll: true
+  pdf_document: default
 ---
 -----------------------------
 
