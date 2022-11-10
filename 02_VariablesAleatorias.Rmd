@@ -45,18 +45,44 @@ VE_Y
 
 b) ¿Cuál es la probabilidad de que el doceavo niño examinado sea el quinto niño encontrado atacado por el virus?
 
+```{r}
+# hay 7 fracasos
+# deben ocurrir 5 exitos
+dnbinom(x = 7, size = 5, prob = 0.05)
+```
+
+
 -------------------------
 
 ## Distribución de probabilidad binomial negativa
+
+
+#### Ejericio N° 1
+
+Un proceso de producción se detiene automáticamente apenas detecte la cuarta unidad defectuosa. Si en el proceso 1 de cada 100 unidades producidas resulta defectuosa. 
+
+a) Obtenga el modelo de probabilidad del número de unidades producidas hasta que se detenga el proceso. ¿Cuál es la probabilidad de que el proceso se detenga en la décima unidad producida?
+
+    Para que se detenga en la décima unidad producida, el décimo tuvo que ser la cuarta unidad defectuosa. En las unidades defectuosas, hay 6 unidades no defectuosas.
+
+```{r}
+# 6 es el numero de fracasos
+# 4 es el numero de exitos que deben ocurrir
+dnbinom(x = 6, size = 4, prob = 0.01)
+```
+
+
+
+#### Ejericio N° 2
 
 Cada llamada de un vendedor por teléfono puede resultar una venta con probabilidad 0.3. Suponga que sus llamadas son independientes.
 
 a) En promedio, ¿cuántas llamadas debería efectuar hasta tener 12 ventas?
 
-    Definimos nuestra variable $Y$ como el número de llamadas hasta     obtener nuestra primera venta y $p$ como la probabilidad de realizar una venta. El valor de $p$ es 0.3. Entonces, la pr
+    Definimos nuestra variable $Y$ como el número de llamadas hasta     obtener nuestra primera venta y $p$ como la probabilidad de realizar una venta. El valor de $p$ es 0.3.
 
 ```{r}
-plot(cars)
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
